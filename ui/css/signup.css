@@ -1,0 +1,60 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+@font-face{
+    font-family: headFont;
+    src: url(../fonts/Summer-Vibes-OTF.otf);
+
+}
+@font-face{
+    font-family: myFont;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+#header{
+    background-color: #485b6c;
+    font-size: 40px;
+    text-align: center;
+    font-family: headFont;
+    width: 100%;
+    color: white;
+}
+#header_signup{
+    font-size: 20px;
+    font-family: myFont;
+    padding: 10px;
+}
+#wrapper{
+    max-width: auto;
+    min-height: 100%;
+    margin: auto;
+    font-family: myFont;
+    font-size: 18px;
+}
+form{
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px ;
+}
+#form_gender{
+    padding: 10px;
+}
+input[type=text], input[type=password], input[type=button]{
+    padding: 10px;
+    margin: 10px;
+    width: 98%;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+input[type=button]{
+    width: 103%;
+    cursor: pointer;
+    background-color: #2b5488;
+    color: white;
+}
+input[type=radio]{
+    transform: scale(1.2);
+    cursor: pointer;
+}
