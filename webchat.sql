@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 15, 2022 lúc 04:08 PM
+-- Thời gian đã tạo: Th3 19, 2022 lúc 07:44 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -39,6 +39,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `userid`, `username`, `email`, `password`, `image`, `date`, `online`) VALUES
+(29, 204380882625821136, 'Võ Ngọc Minh Trang ', 'vongocminhtrang@gmail.com', '12345678', '', '2022-03-19 07:33:09', 0),
+(30, 904029, 'Võ Quang Trường ', 'voquangtruong@gmail.com', '12345678', '', '2022-03-19 07:33:37', 0),
+(31, 7397330, 'Dịp Lâm Tuấn', 'diplamtuan@gmail.com', '12345678', '', '2022-03-19 07:34:04', 0),
+(32, 4946, 'Tạ Minh Vũ ', 'taminhvu@gmail.com', '12345678', '', '2022-03-19 07:34:28', 0);
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -61,7 +71,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

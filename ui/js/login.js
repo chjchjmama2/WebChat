@@ -3,12 +3,13 @@ function _(element){
     return document.getElementById(element);
 }
 
-var signup_button = _("signup_button");
-signup_button.addEventListener("click",collect_data);
+var login_button = _("login_button");
+login_button.addEventListener("click",collect_data);
 
-function collect_data(){
-    signup_button.disabled = true;
-    signup_button.value = "Loading...Please wait...";
+function collect_data(e){
+    e.preventDefault();
+    login_button.disabled = true;
+    login_button.value = "Loading...Please wait...";
 
     var myform = _("myform");
     var inputs = myform.getElementsByTagName("INPUT");
@@ -17,34 +18,23 @@ function collect_data(){
     for(var i = inputs.length - 1; i >= 0 ;i--){
         var key = inputs[i].name;
         switch(key){
-            case "username":
-                data.username = inputs[i].value;
-                break;
             case "email":
                 data.email = inputs[i].value;
-                break;
-            case "gender":
-                if(inputs[i].checked)
-                data.gender = inputs[i].value;
                 break;
             case "password":
                 data.password = inputs[i].value;
                 break;
-            case "retype_password":
-                data.retype_password = inputs[i].value;
-                break;
         }
     }
-    send_data(data,"signup");
+    send_data(data,"login");
 }
 function send_data(data, type){
     var xml = new XMLHttpRequest();
     xml.onload = function(){
         if(xml.readyState == 4 || xml.status == 200){
-            // alert(xml.responseText);
             handle_result(xml.responseText);
-            signup_button.disabled = false;
-            signup_button.value = "Sign up";
+            login_button.disabled = false;
+            login_button.value = "Login";
         }
     }
         data.data_type = type;

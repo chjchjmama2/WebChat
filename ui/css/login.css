@@ -49,14 +49,14 @@ form{
 #form_gender{
     padding: 10px;
 }
-input[type=text], input[type=password], input[type=button]{
+input[type=text], input[type=password], input[type=submit]{
     padding: 10px;
     margin: 10px;
     width: 98%;
     border-radius: 5px;
     border: solid 1px grey;
 }
-input[type=button]{
+input[type=submit]{
     width: 103%;
     cursor: pointer;
     background-color: #2b5488;
@@ -65,4 +65,10 @@ input[type=button]{
 input[type=radio]{
     transform: scale(1.2);
     cursor: pointer;
+}
+#link_signup{
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
 }

@@ -10,12 +10,12 @@
 <body>
     <div id="wrapper">
         <div id="left_pannel">
-            <div style="padding: 10px;">
-                <img id="profile_img" src="ui/images/user1.jpg" alt="Võ Ngọc Minh Trang">
+            <div id="user_info">
+                <img id="profile_img" src="ui/images/male.jpg" alt="User">
                 <br>
-                Võ Ngọc Minh Trang 
+                <span id="username">Username</span>
                 <br>
-                <span>vongocminhtrang@gmail.com</span> 
+                <span id="email">email@gmail.com</span> 
                 <br>
                 <br>
                 <br>
@@ -29,6 +29,9 @@
                     <label id="label_chat" for="radio_settings">
                         <strong>Settings</strong> 
                         <img src="ui/icons/settings.png" alt="Settings"></label>
+                    <label id="logout" for="radio_logout">
+                        <strong>Logout</strong> 
+                        <img src="ui/icons/logout.png" alt="Logout"></label>
                 </div>
             </div>
         </div>
@@ -50,5 +53,5 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="./ui/js/index.js"></script>
+<script type="text/javascript" src="ui/js/index.js"></script>
 </html>

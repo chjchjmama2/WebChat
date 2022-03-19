@@ -13,6 +13,7 @@
             Online Chat
             <div id="header_signup">Sign up</div>
         </div>
+        <div id="error"></div>
         <form action="" id="myform">
             <input type="text" name="username" placeholder="Username"><br>
             <input type="text" name="email" placeholder="Email">
@@ -24,6 +25,10 @@
             <input type="password" name="password" placeholder="Password"><br>
             <input type="password" name="retype_password" placeholder="Retype Password"><br>
             <input type="button" value="Sign up" id="signup_button"><br>
+            
+            <br>
+            <a id="link_login" href="login.php" style="display: block; text-decoration:none; text-align:center; font-size:14px">
+                Already have an Account? Login here</a>
         </form>
     </div>
 </body>
