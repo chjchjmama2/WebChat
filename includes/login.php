@@ -13,7 +13,7 @@
         if(is_array($result))
         {
             $result = $result[0];
-            if($result->password == $DATA_OBJ->password){
+            if($result->password == md5($DATA_OBJ->password)){
                 $_SESSION['userid'] = $result->userid;
                 $info->message = "You're successfully logged in";
                 $info->data_type = "info";

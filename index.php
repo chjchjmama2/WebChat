@@ -20,13 +20,13 @@
                 <br>
                 <br>
                 <div id="select_box">
-                    <label id="label_chat" for="radio_chat">
+                    <label id="label_chats" for="radio_chat">
                         <strong>Chat</strong>
                         <img src="ui/icons/chat.png" alt="Chat"></label>
-                    <label id="label_chat" for="radio_contacts">
+                    <label id="label_contacts" for="radio_contacts">
                         <strong>Contacts</strong> 
                         <img src="ui/icons/contacts.png" alt="Contacts"></label>
-                    <label id="label_chat" for="radio_settings">
+                    <label id="label_settings" for="radio_settings">
                         <strong>Settings</strong> 
                         <img src="ui/icons/settings.png" alt="Settings"></label>
                     <label id="logout" for="radio_logout">
@@ -36,8 +36,14 @@
             </div>
         </div>
         <div id="right_pannel">
-            <div id="header">Online Chat</div>
+            <div id="header">
+                <div id="loader_holder" class="loader_off">
+                    <img id="loader_on_gif" src="ui/icons/giphy.gif" alt="">
+                </div>
+                Online Chat
+            </div>
             <div id="container">
+               
                 <div id="inner_left_pannel">
                    
                 </div>
@@ -47,7 +53,7 @@
                 <input type="radio" id="radio_settings" name="myradio">
 
                 <div id="inner_right_pannel">
-                    
+                   
                 </div>
             </div>
         </div>

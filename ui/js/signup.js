@@ -13,7 +13,7 @@ function collect_data(){
     var myform = _("myform");
     var inputs = myform.getElementsByTagName("INPUT");
     
-    var data ={}
+    var data ={};
     for(var i = inputs.length - 1; i >= 0 ;i--){
         var key = inputs[i].name;
         switch(key){
@@ -23,9 +23,11 @@ function collect_data(){
             case "email":
                 data.email = inputs[i].value;
                 break;
-            case "gender":
-                if(inputs[i].checked)
-                data.gender = inputs[i].value;
+            case "gender_male":
+            case "gender_female":
+                if(inputs[i].checked){
+                    data.gender = inputs[i].value;
+                }
                 break;
             case "password":
                 data.password = inputs[i].value;
@@ -59,7 +61,7 @@ function handle_result(result){
         window.location = "index.php";
     }else
     {
-        var error = _("error").
+        var error = _("error");
         error.innerHTML = data.message;
         error.style.display = "block";
     }

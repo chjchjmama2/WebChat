@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 19, 2022 lúc 07:44 AM
+-- Thời gian đã tạo: Th3 27, 2022 lúc 07:49 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -32,6 +32,7 @@ CREATE TABLE `users` (
   `userid` bigint(20) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `gender` varchar(6) NOT NULL,
   `password` varchar(64) NOT NULL,
   `image` varchar(500) NOT NULL,
   `date` datetime NOT NULL,
@@ -42,11 +43,11 @@ CREATE TABLE `users` (
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `userid`, `username`, `email`, `password`, `image`, `date`, `online`) VALUES
-(29, 204380882625821136, 'Võ Ngọc Minh Trang ', 'vongocminhtrang@gmail.com', '12345678', '', '2022-03-19 07:33:09', 0),
-(30, 904029, 'Võ Quang Trường ', 'voquangtruong@gmail.com', '12345678', '', '2022-03-19 07:33:37', 0),
-(31, 7397330, 'Dịp Lâm Tuấn', 'diplamtuan@gmail.com', '12345678', '', '2022-03-19 07:34:04', 0),
-(32, 4946, 'Tạ Minh Vũ ', 'taminhvu@gmail.com', '12345678', '', '2022-03-19 07:34:28', 0);
+INSERT INTO `users` (`id`, `userid`, `username`, `email`, `gender`, `password`, `image`, `date`, `online`) VALUES
+(2, 7628774348369501, 'Võ Ngọc Minh Trang ', 'vongocminhtrang@gmail.com', 'Female', '25d55ad283aa400af464c76d713c07ad', '', '2022-03-26 03:13:21', 0),
+(3, 343718853729, 'Võ Quang Trường', 'voquangtruong@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', '', '2022-03-26 03:13:43', 0),
+(4, 2998709042477627, 'Dịp Lâm Tuấn', 'diplamtuan@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', '', '2022-03-26 03:13:59', 0),
+(5, 993807433642, 'Tạ Minh Vũ', 'taminhvu@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', '', '2022-03-26 03:14:26', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -71,7 +72,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

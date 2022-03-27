@@ -79,6 +79,7 @@ html,body{
     font-size: 40px;
     text-align: center;
     font-family: headFont;
+    position: relative;
 }
 #container{
     display: flex;
@@ -97,9 +98,35 @@ html,body{
     flex: 2;
     transition: all 0.7s ease;
 }
+
 #radio_settings:checked ~ #inner_right_pannel{
     flex: 0;
 }
 #radio_contacts:checked ~ #inner_right_pannel{
     flex: 0;
 }
+#wrapper_contact{
+    text-align: center;
+}
+#contact{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+#contact img{
+    width: 130px;
+    height: 130px;
+}
+.loader_on{
+    position:absolute;
+    width: 30%;
+}
+.loader_off{
+    display: none;
+}
+#loader_on_gif{
+    width: 100px;
+}
+

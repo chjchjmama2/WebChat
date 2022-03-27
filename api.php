@@ -13,6 +13,7 @@
             die;
         } 
     }
+    
     require_once("./classes/autoload.php");
     $DB = new Database();
     
@@ -37,6 +38,22 @@
        
         // user info
         include("includes/user_info.php");
+    } 
+    elseif(isset($DATA_OBJ->data_type) && $DATA_OBJ->data_type == "contacts"){
+       
+        // contacts
+        include("includes/contacts.php");
     }
+    elseif(isset($DATA_OBJ->data_type) && $DATA_OBJ->data_type == "chats"){
+       
+        // chats
+        include("includes/chats.php");
+    }
+    elseif(isset($DATA_OBJ->data_type) && $DATA_OBJ->data_type == "settings"){
+       
+        // settings
+        include("includes/settings.php");
+    }
+
 
 ?>

@@ -48,7 +48,7 @@ function handle_result(result) {
     if (data.data_type == "info") {
         window.location = "index.php";
     } else {
-        var error = _("error")
+        var error = _("error");
         error.innerHTML = data.message;
         error.style.display = "block";
     }

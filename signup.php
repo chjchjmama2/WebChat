@@ -19,8 +19,8 @@
             <input type="text" name="email" placeholder="Email">
             <div id="form_gender">
                 Gender :<br><br>
-                <input type="radio" name="gender">Male<br><br>
-                <input type="radio" name="gender">Female<br>
+                <input id="gender_male" type="radio" name="gender_male">Male<br><br>
+                <input id="gender_female" type="radio" name="gender_female">Female<br>
             </div>
             <input type="password" name="password" placeholder="Password"><br>
             <input type="password" name="retype_password" placeholder="Retype Password"><br>

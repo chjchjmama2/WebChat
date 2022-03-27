@@ -2,7 +2,8 @@ function _(element){
     return document.getElementById(element);
 }
 
-var label = _("label_chat");
+
+var label = _("label_chats");
 label.addEventListener("click",function(){
     var inner_pannel = _("inner_left_pannel");
     var ajax = new XMLHttpRequest();
@@ -18,9 +19,12 @@ label.addEventListener("click",function(){
 
 function get_data(find, type){
     var xml = new XMLHttpRequest();
+    var loader_holder = _("loader_holder");
+    loader_holder.className = "loader_on";
     xml.onload = function (){
         if(xml.readyState == 4 || xml.status == 200)
         {
+            loader_holder.className = "loader_off";
             handle_result(xml.responseText, type);
         }
     }
@@ -49,6 +53,16 @@ function handle_result(result, type)
                     email.innerHTML = obj.email;
                     break;
                 case "contacts":
+                    var inner_left_panel = _("inner_left_pannel");
+                    inner_left_panel.innerHTML = obj.message;
+                    break;
+                case "chats":
+                    var inner_left_panel = _("inner_left_pannel");
+                    inner_left_panel.innerHTML = obj.message;
+                    break;
+                case "settings":
+                    var inner_left_panel = _("inner_left_pannel");
+                    inner_left_panel.innerHTML = obj.message;
                     break;
             };
         }
@@ -65,5 +79,25 @@ function logout_user(){
     }
    
 }
+
+var label_contacts = _("label_contacts");
+label_contacts.addEventListener("click",get_contacts);
+function get_contacts(e){
+    get_data({},"contacts");
+}
+
+var label_chats = _("label_chats");
+label_chats.addEventListener("click", get_chats);
+function get_chats(e){
+    get_data({},"chats");
+}
+
+var label_settings = _("label_settings");
+label_settings.addEventListener("click", get_settings);
+function get_settings(e){
+    get_data({},"settings");
+}
+
+
 
 get_data({},"user_info");
