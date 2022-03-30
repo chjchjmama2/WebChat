@@ -1,0 +1,76 @@
+@keyframes appear{
+    0%{
+        opacity: 0;
+        transform: translateY(50px) rotate(5deg);
+        transform-origin: 100% 100%;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px) rotate(0deg);
+        transform-orgin: 100% 100%;
+    }
+}
+form{
+    text-align:left; 
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px ;
+}
+#form_gender{
+    padding: 10px;
+}
+#container{
+    display:flex; 
+    animation: appear 0.8s ease;
+}
+#image_settings{
+    width: 250px; 
+    height: 250px; 
+    margin: 50px; 
+    margin-left: 180px; 
+    margin-top: 52px;
+}
+input[type=text], input[type=password], input[type=button]{
+    display: block !important;
+    padding: 10px;
+    margin: 5px;
+    width: 300px;
+    height:25px;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+input[type=button]{
+    padding: 10px;
+    height:40px;
+    width: 323px;
+    cursor: pointer;
+    background-color: #2b5488;
+    color: white;
+}
+input[type=button]:hover{
+    background-color: #8B0000;
+}
+input[type=radio]{
+    float: left;
+    width: 20px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+#change_image_button{
+    display: block;
+    background-color: #8B0000;
+    width: 158px;
+    margin-left: 212px;
+    margin-top: -35px;
+    height: 27px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0.8em;
+}
+#change_image_input{
+    display: none;
+}
+.dragging{
+    border: dashed 2px #aaa;
+}

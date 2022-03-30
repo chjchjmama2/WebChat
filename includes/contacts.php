@@ -4,7 +4,10 @@
     $myusers = $DB->read($sql, []);
 
     $mydata = 
-    '<div id="wrapper_contact">';
+    '
+    <link rel="stylesheet" href="./ui/css/contact.css">
+    <div id="wrapper_contact" >';
+    
     
     if(is_array($myusers)){
         foreach($myusers as $row)

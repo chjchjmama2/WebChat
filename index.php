@@ -37,7 +37,7 @@
         </div>
         <div id="right_pannel">
             <div id="header">
-                <div id="loader_holder" class="loader_off">
+                <div id="loader_holder" class="loader_on">
                     <img id="loader_on_gif" src="ui/icons/giphy.gif" alt="">
                 </div>
                 Online Chat

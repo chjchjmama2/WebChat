@@ -1,8 +1,8 @@
 <?php
     $info = (Object)[];
+     
     $data = false;
-    $data['userid'] = $DB->generate_id(20);
-    $data['date'] = date("Y-m-d H:i:s");
+    $data['userid'] = $_SESSION['userid'];
 
   
     $data['password'] = md5($DATA_OBJ->password);
@@ -67,27 +67,27 @@
 
     if($Error == "")
     {
-        $query = "insert into users (userid,username,email,gender,password,date) 
-        values (:userid,:username,:email,:gender,:password,:date)";
+        $query = "update users set username = :username, email = :email, gender = :gender, password = :password
+        where userid = :userid limit 1";
         $result = $DB->write($query, $data);
 
         if($result)
         {
-            // echo "Your profile was created";
-            $info->message = "Your profile was created";
-            $info->data_type = "info";
+            // echo "Your data was saved";
+            $info->message = "Your data was saved";
+            $info->data_type = "save_settings";
             echo json_encode($info);
         }
         else{
-            // echo "Your profile was NOT created";
-            $info->message = "Your profile was NOT created due to an error";
-            $info->data_type = "error";
+            // echo "Your data was NOT created";
+            $info->message = "Your data was NOT saved due to an error";
+            $info->data_type = "save_settings";
             echo json_encode($info);
         }
     }else{
         // echo $Error;
         $info->message = $Error;
-        $info->data_type = "error";
+        $info->data_type = "save_settings";
         echo json_encode($info);
     }
 

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
     $DATA_RAW = file_get_contents("php://input");
     $DATA_OBJ = json_decode($DATA_RAW);
 
@@ -53,6 +54,11 @@
        
         // settings
         include("includes/settings.php");
+    }
+    elseif(isset($DATA_OBJ->data_type) && $DATA_OBJ->data_type == "save_settings"){
+       
+        // save_settings
+        include("includes/save_settings.php");
     }
 
 

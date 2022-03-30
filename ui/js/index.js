@@ -49,9 +49,13 @@ function handle_result(result, type)
                 case "user_info":
                     var username = _("username");
                     var email = _("email");
+                    var profile_img = _("profile_img");
+
                     username.innerHTML = obj.username;
                     email.innerHTML = obj.email;
+                    profile_img.src = obj.image;
                     break;
+
                 case "contacts":
                     var inner_left_panel = _("inner_left_pannel");
                     inner_left_panel.innerHTML = obj.message;
@@ -63,6 +67,11 @@ function handle_result(result, type)
                 case "settings":
                     var inner_left_panel = _("inner_left_pannel");
                     inner_left_panel.innerHTML = obj.message;
+                    break;
+                case "save_settings":
+                    alert(obj.message);
+                    get_data({},"user_info");
+                    get_settings(true);
                     break;
             };
         }
@@ -99,5 +108,103 @@ function get_settings(e){
 }
 
 
-
 get_data({},"user_info");
+
+function _(element){
+
+    return document.getElementById(element);
+}
+
+function collect_data(){
+    var save_settings_button = _("save_settings_button");
+    save_settings_button.disabled = true;
+    save_settings_button.value = "Loading...Please wait...";
+
+    var myform = _("myform");
+    var inputs = myform.getElementsByTagName("INPUT");
+    
+    var data ={};
+    for(var i = inputs.length - 1; i >= 0 ;i--){
+        var key = inputs[i].name;
+        switch(key){
+            case "username":
+                data.username = inputs[i].value;
+                break;
+            case "email":
+                data.email = inputs[i].value;
+                break;
+            case "gender":
+                if(inputs[i].checked){
+                    data.gender = inputs[i].value;
+                }
+                break;
+            case "password":
+                data.password = inputs[i].value;
+                break;
+            case "retype_password":
+                data.retype_password = inputs[i].value;
+                break;
+        }
+    }
+    send_data(data,"save_settings");
+}
+function send_data(data, type){
+    var xml = new XMLHttpRequest();
+    xml.onload = function(){
+        if(xml.readyState == 4 || xml.status == 200){
+            handle_result(xml.responseText);
+            var save_settings_button = _("save_settings_button");
+            save_settings_button.disabled = false;
+            save_settings_button.value = "Save Settings";
+        }
+    }
+        data.data_type = type;
+        var data_string = JSON.stringify(data);
+        xml.open("POST","api.php",true);
+        xml.send(data_string);
+}
+function upload_profile_image(files){
+    var change_image_button = _("change_image_button");
+    change_image_button.disabled = true;
+    change_image_button.innerHTML = "Uploading Image...";
+
+    var myform = new FormData();
+    var xml = new XMLHttpRequest();
+    xml.onload = function(){
+        if(xml.readyState == 4 || xml.status == 200){
+            // alert(xml.responseText);
+            alert("Your image was changed successfully.");
+            get_data({}, 'user_info');
+            get_settings(true);
+            change_image_button.disabled = false;
+            change_image_button.innerHTML = "Change Image";
+        }
+    }
+        myform.append('file', files[0]);
+        myform.append('data_type', "change_profile_image");
+
+        xml.open("POST","uploader.php",true);
+        xml.send(myform);
+}
+function handle_drag_and_drop(e)
+{
+    if(e.type == "dragover"){
+        e.preventDefault();
+        e.target.className = "dragging";
+    }
+    else if(e.type == "dragleave")
+    {
+        e.target.className = "";
+    }
+    else if(e.type == "drop")
+    {
+        e.preventDefault();
+        e.target.className = "";
+
+        upload_profile_image(e.dataTransfer.files);
+    }
+    else
+    {
+        e.target.className = "";
+    }
+}

@@ -66,3 +66,9 @@ input[type=radio]{
     transform: scale(1.2);
     cursor: pointer;
 }
+#link_login{
+    display: block; 
+    text-decoration:none; 
+    text-align:center; 
+    font-size:14px;
+}

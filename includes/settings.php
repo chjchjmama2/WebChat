@@ -1,135 +1,66 @@
 <?php
-    $mydata = '
-    <style type="text/css">
-    form{
-        text-align:left; 
-        margin: auto;
-        padding: 10px;
-        width: 100%;
-        max-width: 400px ;
-    }
-    #form_gender{
-        padding: 10px;
-    }
-    input[type=text], input[type=password], input[type=button]{
-        padding: 10px;
-        margin: 10px;
-        width: 200px;
-        border-radius: 5px;
-        border: solid 1px grey;
-    }
-    input[type=button]{
-        padding: 10px;
-        width: 200px;
-        cursor: pointer;
-        background-color: #2b5488;
-        color: white;
-    }
-    input[type=radio]{
-        transform: scale(1.2);
-        cursor: pointer;
-    }
-    </style>
-    <div id="error"></div>
-    <div style="display:flex">
-        <div>
-            <img src="ui/images/male.jpg" style="width=250px; height:250px; margin:50px" />
-            <input type="button" value="Change Image" id="change_image_button" style="background-color:#9b9a80;"><br>
-        </div>
-        
-        <form action="" id="myform">
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="text" name="email" placeholder="Email">
-            <div id="form_gender">
-                Gender :<br><br>
-                <input id="gender_male" type="radio" name="gender_male">Male<br><br>
-                <input id="gender_female" type="radio" name="gender_female">Female<br>
+
+    $sql = "select * from users where userid = :userid limit 1";
+    $id = $_SESSION['userid'];
+    $data = $DB->read($sql, ['userid'=>$id]); 
+    
+    if (is_array($data)) {
+        $data = $data[0];
+
+        // check if image exits
+        $image = ($data->gender == "Male") ? "ui/images/male.jpg" : "ui/images/female.jpg";
+        if (file_exists($data->image)) {
+            $image = $data->image;
+        }
+
+        $gender_male = "";
+        $gender_female = "";
+
+        if ($data->gender == "Male") {
+            $gender_male = "checked";
+        } else {
+            $gender_female = "checked";
+        }
+
+        $mydata = '
+            <link rel="stylesheet" href="./ui/css/settings.css">
+            <div id="error"></div>
+            <div id="container">
+                <div>
+                    <img ondragover="handle_drag_and_drop(event)" ondragleave="handle_drag_and_drop(event)" ondrop="handle_drag_and_drop(event)" 
+                     id="image_settings" src="'.$image.'" />
+                    <label for="change_image_input" id="change_image_button">
+                        Change Image
+                    </label>
+                    <input type="file" onchange="upload_profile_image(this.files)" value="Change Image" id="change_image_input" >
+                </div>
+                
+                <form action="" id="myform">
+                    <input style="margin-top:40px" type="text" name="username" placeholder="Username"
+                    value="'.$data->username.'"><br>
+                    <input  type="text" name="email" placeholder="Email" value="'.$data->email.'">
+                    <div id="form_gender">
+                        Gender :<br><br>
+                        <input style="display: block;" id="gender_male" type="radio" name="gender" '.$gender_male.'>Male<br><br>
+                        <input style="display:block;" id="gender_female" type="radio" name="gender" '.$gender_female.'>Female<br>
+                    </div>
+                    <input type="password" name="password" placeholder="Password"><br>
+                    <input type="password" name="retype_password" placeholder="Retype Password"><br>
+                    <input type="button" value="Save Settings" id="save_settings_button" onclick="collect_data(event)"><br>
+                </form>
+
             </div>
-            <input type="password" name="password" placeholder="Password"><br>
-            <input type="password" name="retype_password" placeholder="Retype Password"><br>
-            <input type="button" value="Save Settings" id="save_settings_button"><br>
-        </form>
-        
-    </div>
-    <script type="text/javascript">
-    function _(element){
-   
-        return document.getElementById(element);
+           
+            ';
+    
+        $info->message = $mydata;
+        $info->data_type = "contacts";
+        echo json_encode($info);
     }
-    
-    var signup_button = _("signup_button");
-    signup_button.addEventListener("click",collect_data);
-    
-    function collect_data(){
-        signup_button.disabled = true;
-        signup_button.value = "Loading...Please wait...";
-    
-        var myform = _("myform");
-        var inputs = myform.getElementsByTagName("INPUT");
-        
-        var data ={};
-        for(var i = inputs.length - 1; i >= 0 ;i--){
-            var key = inputs[i].name;
-            switch(key){
-                case "username":
-                    data.username = inputs[i].value;
-                    break;
-                case "email":
-                    data.email = inputs[i].value;
-                    break;
-                case "gender_male":
-                case "gender_female":
-                    if(inputs[i].checked){
-                        data.gender = inputs[i].value;
-                    }
-                    break;
-                case "password":
-                    data.password = inputs[i].value;
-                    break;
-                case "retype_password":
-                    data.retype_password = inputs[i].value;
-                    break;
-            }
-        }
-        send_data(data,"signup");
+    else{
+        $info->message = "No contacts were found";
+        $info->data_type = "error";
+        echo json_encode($info);
     }
-    function send_data(data, type){
-        var xml = new XMLHttpRequest();
-        xml.onload = function(){
-            if(xml.readyState == 4 || xml.status == 200){
-                // alert(xml.responseText);
-                handle_result(xml.responseText);
-                signup_button.disabled = false;
-                signup_button.value = "Sign up";
-            }
-        }
-            data.data_type = type;
-            var data_string = JSON.stringify(data);
-            xml.open("POST","api.php",true);
-            xml.send(data_string);
-    }
-    
-    function handle_result(result){
-        var data = JSON.parse(result);
-        if(data.data_type == "info"){
-            window.location = "index.php";
-        }else
-        {
-            var error = _("error");
-            error.innerHTML = data.message;
-            error.style.display = "block";
-        }
-    }    
-    </script>
-    ';
 
-    $info->message = $mydata;
-    $info->data_type = "contacts";
-    echo json_encode($info);
-
-    die;
-
-    $info->message = "No contacts were found";
-    $info->data_type = "error";
-    echo json_encode($info);
 ?>
