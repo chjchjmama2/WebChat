@@ -11,3 +11,21 @@
 #wrapper_contact{
     animation: appear 0.8s ease;
 }
+#contact{
+    position:relative;
+    cursor: pointer;
+    transition: all .5s cubic-bezier(0.68, -2, 0.265, 1.55);
+}
+#contact:hover{
+    transform: scale(1.1);
+}
+#message_unread{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: orange;
+    color: white;
+    position: absolute;
+    left: 25px;
+    top: 0px;
+}

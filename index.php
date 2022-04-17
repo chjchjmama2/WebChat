@@ -29,7 +29,7 @@
                     <label id="label_settings" for="radio_settings">
                         <strong>Settings</strong> 
                         <img src="ui/icons/settings.png" alt="Settings"></label>
-                    <label id="logout" for="radio_logout">
+                    <label id="logout" for="radio_logout" onclick="logout_user()">
                         <strong>Logout</strong> 
                         <img src="ui/icons/logout.png" alt="Logout"></label>
                 </div>
@@ -40,6 +40,12 @@
                 <div id="loader_holder" class="loader_on">
                     <img id="loader_on_gif" src="ui/icons/giphy.gif" alt="">
                 </div>
+                
+                <div id="image_viewer" class="image_off" onclick="close_image(event);">
+                    
+                </div>
+
+                <div class="change_background"></div>
                 Online Chat
             </div>
             <div id="container">
@@ -59,5 +65,5 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src="ui/js/index.js"></script>
+<script type="text/javascript" src="./ui/js/index.js"></script>
 </html>

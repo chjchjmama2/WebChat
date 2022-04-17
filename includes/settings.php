@@ -29,8 +29,8 @@
                 <div>
                     <img ondragover="handle_drag_and_drop(event)" ondragleave="handle_drag_and_drop(event)" ondrop="handle_drag_and_drop(event)" 
                      id="image_settings" src="'.$image.'" />
-                    <label for="change_image_input" id="change_image_button">
-                        Change Image
+                    <label for="change_image_input" id="change_image_button" style="">
+                        Change Image 
                     </label>
                     <input type="file" onchange="upload_profile_image(this.files)" value="Change Image" id="change_image_input" >
                 </div>
@@ -44,7 +44,7 @@
                         <input style="display: block;" id="gender_male" type="radio" name="gender" '.$gender_male.'>Male<br><br>
                         <input style="display:block;" id="gender_female" type="radio" name="gender" '.$gender_female.'>Female<br>
                     </div>
-                    <input type="password" name="password" placeholder="Password"><br>
+                    <input type="password" name="password" placeholder="New Password"><br>
                     <input type="password" name="retype_password" placeholder="Retype Password"><br>
                     <input type="button" value="Save Settings" id="save_settings_button" onclick="collect_data(event)"><br>
                 </form>

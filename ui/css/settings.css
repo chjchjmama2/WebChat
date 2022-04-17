@@ -49,7 +49,7 @@ input[type=button]{
     color: white;
 }
 input[type=button]:hover{
-    background-color: #8B0000;
+    background-color: cornflowerblue;
 }
 input[type=radio]{
     float: left;
@@ -59,7 +59,6 @@ input[type=radio]{
 }
 #change_image_button{
     display: block;
-    background-color: #8B0000;
     width: 158px;
     margin-left: 212px;
     margin-top: -35px;
@@ -67,6 +66,9 @@ input[type=radio]{
     text-align: center;
     border-radius: 5px;
     padding: 0.8em;
+    background-color:#2b5488 !important; 
+    cursor:pointer
+ 
 }
 #change_image_input{
     display: none;
