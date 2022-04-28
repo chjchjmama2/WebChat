@@ -40,8 +40,8 @@
                 $messages = "<br> 
                 <div id='messages_holder_parent' onclick = 'set_seen(event)' >
                     <div id='messages_holder'>";
-                    // $messages .= message_left($row);
-                    // $messages .= message_right($row);
+                    // $messages .= message_left($row, $data);
+                    // $messages .= message_right($row, $data);
             }
 
                         //read from database
@@ -108,6 +108,7 @@
 		if(is_array($result2)){
  
 			$result2 = array_reverse($result2);
+
 				foreach ($result2 as $data) {
 					# code...
 					$other_user = $data->sender;
@@ -138,4 +139,6 @@
  
 		echo json_encode($info);
 	}
+
+
 ?>

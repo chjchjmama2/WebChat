@@ -77,6 +77,7 @@
     }
 
     function message_left($data, $row){
+
         $image = ($row->gender == "Male") ? "ui/images/male.jpg" : "ui/images/female.jpg";
         if(file_exists($row->image)){
             $image = $row->image;
@@ -110,6 +111,13 @@
     }
 
     function message_right($data, $row){
+
+        // $key = '1234567890trangtuantruongvu@@##^$!';
+		// $chiper = "AES-128-CTR";
+		// $option = 0;
+		$message_encrypted = $data->message;
+		// $message_dec = openssl_decrypt($message_encrypted, $chiper, $key, $option);
+    
         $image = ($row->gender == "Male") ? "ui/images/male.jpg" : "ui/images/female.jpg";
         if(file_exists($row->image)){
             $image = $row->image;
@@ -119,24 +127,16 @@
         <div id='message_right'>
 
         <div>";
-
-        if($data->seen){
-            $a .= "<img id='seen_img' src='ui/icons/tick.png' style = '   
-           '/>";
-        }elseif($data->received){ 
-            $a .= "<img id='seen_img' src='ui/icons/tick_grey.png' />";
-        }
        
         $a .= "</div>
-            <img id='prof_img' src='$image'>
-            <b>$row->username</b><br>
-            $data->message<br><br><br>";
+            <br>$message_encrypted<br><br>";
 
             if($data->files != "" && file_exists($data->files)){
                 $a .= "<img id='message_image_file' src='$data->files' onclick='image_show(event)' /> <br>";
             }
 
             $a .= "<span>".date("jS M Y",strtotime($data->date))."</span>
+
 
             <img id='trash' src='ui/icons/trash.png' onclick='delete_message(event)' msgid='$data->id'/>
         </div>";

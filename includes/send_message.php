@@ -10,15 +10,16 @@
 	$result = $DB->read($sql,$arr);
 
 	if(is_array($result)){
+		$key = '1234567890123';
 
-		$arr['message'] = $DATA_OBJ->find->message;
+		$arr['message'] = message_encrypted($DATA_OBJ->find->message);
 		$arr['date'] = date("Y-m-d H:i:s");
 		$arr['sender'] = $_SESSION['userid'];
 		$arr['msgid'] = get_random_string_max(60);
 
 			$arr2['sender'] = $_SESSION['userid'];
 			$arr2['receiver'] = $arr['userid'];
-
+		
 			$sql = "select * from messages where (sender = :sender && receiver = :receiver) or 
 			(receiver = :sender && sender = :receiver) limit 1";
 			$result2 = $DB->read($sql,$arr2);
@@ -27,7 +28,9 @@
 				$arr['msgid'] = $result2[0]->msgid;
 			}
 
+			
 		$query = "insert into messages (sender,receiver,message,date,msgid) values (:sender,:userid,:message,:date,:msgid)";
+		
 		$DB->write($query,$arr);
 
 		//user found
@@ -105,6 +108,15 @@ function get_random_string_max($length) {
 	}
 
 	return $text;
+}
+
+function message_encrypted($message){
+	$key = '1234567890trangtuantruongvu@@##^$!';
+	$chiper = "AES-128-CTR"; 
+	$option = 0;
+	$message = openssl_encrypt($message, $chiper, $key, $option);
+
+	return $message;
 }
 
 ?>
