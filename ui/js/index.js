@@ -33,7 +33,7 @@ function get_data(find, type){
 
 function handle_result(result, type)
 {
-    alert(result);
+    // alert(result);
     if(result.trim() != ""){
 
         var inner_right_panel = _("inner_right_pannel");

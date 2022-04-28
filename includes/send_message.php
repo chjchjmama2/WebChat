@@ -10,7 +10,6 @@
 	$result = $DB->read($sql,$arr);
 
 	if(is_array($result)){
-		$key = '1234567890123';
 
 		$arr['message'] = message_encrypted($DATA_OBJ->find->message);
 		$arr['date'] = date("Y-m-d H:i:s");
@@ -111,12 +110,16 @@ function get_random_string_max($length) {
 }
 
 function message_encrypted($message){
-	$key = '1234567890trangtuantruongvu@@##^$!';
-	$chiper = "AES-128-CTR"; 
-	$option = 0;
-	$message = openssl_encrypt($message, $chiper, $key, $option);
+	$cipher_algo = "AES-128-CTR"; //The cipher method, in our case, AES 
+	$iv_length = openssl_cipher_iv_length($cipher_algo); //The length of the initialization vector
+	$option = 0; // Bitwise disjunction of flags
+	$encrypt_iv = '8746376827619797'; //Initialization vector, non-null
+	$encrypt_key = "1234567890trangtuantruongvu@@##^$!"; // The encryption key
+	// Use openssl_encrypt() encrypt the given string
+	$encrypted_string = openssl_encrypt($message, $cipher_algo,
+				$encrypt_key, $option, $encrypt_iv);
 
-	return $message;
+	return $encrypted_string;
 }
 
 ?>

@@ -77,6 +77,14 @@
     }
 
     function message_left($data, $row){
+        $cipher_algo = "AES-128-CTR"; //The cipher method, in our case, AES 
+	    $iv_length = openssl_cipher_iv_length($cipher_algo); //The length of the initialization vector
+        $option = 0; // Bitwise disjunction of flags
+        $decrypt_iv = '8746376827619797'; // Initialization vector, non-null
+        $decrypt_key = "1234567890trangtuantruongvu@@##^$!"; // The encryption key
+        // Use openssl_decrypt() to decrypt the string
+        $decrypted_string = openssl_decrypt ($data->message, $cipher_algo,
+                $decrypt_key, $option, $decrypt_iv);
 
         $image = ($row->gender == "Male") ? "ui/images/male.jpg" : "ui/images/female.jpg";
         if(file_exists($row->image)){
@@ -98,7 +106,7 @@
         $a .= "</div>
             <img id = 'prof_img' src='$image'>
             <b>$row->username</b><br>
-            $data->message<br><br><br>";
+            $decrypted_string<br><br><br>";
 
             if($data->files != "" && file_exists($data->files)){
                 $a .= "<img id='message_image_file' src='$data->files' onclick='image_show(event)' /> <br>";
@@ -111,12 +119,15 @@
     }
 
     function message_right($data, $row){
+        $cipher_algo = "AES-128-CTR"; //The cipher method, in our case, AES 
+	    $iv_length = openssl_cipher_iv_length($cipher_algo); //The length of the initialization vector
+        $option = 0; // Bitwise disjunction of flags
+        $decrypt_iv = '8746376827619797'; // Initialization vector, non-null
+        $decrypt_key = "1234567890trangtuantruongvu@@##^$!"; // The encryption key
+        // Use openssl_decrypt() to decrypt the string
+        $decrypted_string = openssl_decrypt ($data->message, $cipher_algo,
+                $decrypt_key, $option, $decrypt_iv);
 
-        // $key = '1234567890trangtuantruongvu@@##^$!';
-		// $chiper = "AES-128-CTR";
-		// $option = 0;
-		$message_encrypted = $data->message;
-		// $message_dec = openssl_decrypt($message_encrypted, $chiper, $key, $option);
     
         $image = ($row->gender == "Male") ? "ui/images/male.jpg" : "ui/images/female.jpg";
         if(file_exists($row->image)){
@@ -129,7 +140,7 @@
         <div>";
        
         $a .= "</div>
-            <br>$message_encrypted<br><br>";
+            <br>$decrypted_string<br><br>";
 
             if($data->files != "" && file_exists($data->files)){
                 $a .= "<img id='message_image_file' src='$data->files' onclick='image_show(event)' /> <br>";

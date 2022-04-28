@@ -123,12 +123,22 @@
 	  				if(file_exists($myuser->image)){
 	  					$image = $myuser->image;
 	  				}
+                    
+                    $cipher_algo = "AES-128-CTR"; //The cipher method, in our case, AES 
+                    $iv_length = openssl_cipher_iv_length($cipher_algo); //The length of the initialization vector
+                    $option = 0; // Bitwise disjunction of flags
+                    $decrypt_iv = '8746376827619797'; // Initialization vector, non-null
+                    $decrypt_key = "1234567890trangtuantruongvu@@##^$!"; // The encryption key
+                    // Use openssl_decrypt() to decrypt the string
+                    $decrypted_string = openssl_decrypt ($data->message, $cipher_algo,
+                            $decrypt_key, $option, $decrypt_iv);
+              
 
  						$mydata .= "
  							<div id='active_contact' userid='$myuser->userid' onclick='start_chat(event)' style='cursor:pointer'>
 								<img src='$image'>
 								$myuser->username<br>
-								<span style='font-size:11px;'>'$data->message'</span>
+								<span style='font-size:11px;'>'$decrypted_string'</span>
 							</div>";
 			}
 		}
