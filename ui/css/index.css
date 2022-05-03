@@ -284,6 +284,8 @@ html,body{
     color: white;
     flex: 1;
     font-size: 16px;
+    margin-top: 22px;
+    height:50px;
 }
 #messages_footer input[type=text]{
     display: block !important;
@@ -294,6 +296,7 @@ html,body{
     border: solid 0.5px grey;
     flex: 8;
     font-size: 15px;
+    margin-top:25px
 }
 #messages_delete_this_thread{
     cursor: pointer;

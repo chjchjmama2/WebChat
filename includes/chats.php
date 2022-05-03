@@ -63,11 +63,11 @@
                                     $new_message = true;
                                 }
                                 if($data->receiver == $_SESSION['userid']){
-                                    $DB->write("update messages set received = 1 where id = $data->id limit 1");
+                                    $DB->write("update messages set received = 1 where id = '$data->id' limit 1");
                                 }
 
                                 if($data->receiver == $_SESSION['userid'] && $data->received == 1 && $seen){
-                                    $DB->write("update messages set seen = 1 where id = $data->id limit 1");
+                                    $DB->write("update messages set seen = 1 where id = '$data->id' limit 1");
                                 }
 
                                 if($_SESSION['userid'] == $data->sender){

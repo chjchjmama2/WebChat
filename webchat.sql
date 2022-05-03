@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 28, 2022 lúc 05:44 PM
+-- Thời gian đã tạo: Th5 03, 2022 lúc 03:26 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -64,10 +64,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userid`, `username`, `email`, `gender`, `password`, `image`, `date`, `online`) VALUES
-(3, 523148480791044, 'Dịp Lâm Tuấn', 'diplamtuan@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', 'uploads/lamtuan.jpg', '2022-03-28 06:32:50', 0),
-(4, 9223372036854775807, 'Tạ Minh Vũ', 'taminhvu@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', 'uploads/minhvu.jpg', '2022-03-28 06:33:16', 0),
-(5, 2209356475645175023, 'Võ Quang Trường ', 'voquangtruong@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', 'uploads/quangtruong.jpg', '2022-03-28 06:34:03', 0),
-(6, 168707638, 'Võ Ngọc Minh Trang ', 'vongocminhtrang@gmail.com', 'Female', '25d55ad283aa400af464c76d713c07ad', 'uploads/minhtrang.jpg', '2022-03-28 06:53:19', 0);
+(5, 2209356475645175023, 'User2', 'user2@gmail.com', 'Male', '25d55ad283aa400af464c76d713c07ad', 'uploads/user2.jpg', '2022-03-28 06:34:03', 0),
+(6, 168707638, 'User1', 'user1@gmail.com', 'Female', '25d55ad283aa400af464c76d713c07ad', 'uploads/user1.jpg', '2022-03-28 06:53:19', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
